@@ -97,21 +97,10 @@ output "egress_only_internet_gateway_id" {
   value       = concat(aws_egress_only_internet_gateway.this.*.id, [""])[0]
 }
 
-output "default_vpc_cidr_block" {
-  description = "The CIDR block of the Default VPC"
-  value       = concat(aws_default_vpc.this.*.cidr_block, [""])[0]
-}
-
 output "default_vpc_main_route_table_id" {
   description = "The ID of the main route table associated with the Default VPC"
   value       = concat(aws_default_vpc.this.*.main_route_table_id, [""])[0]
 }
-
-output "public_network_acl_arn" {
-  description = "ARN of the public network ACL"
-  value       = concat(aws_network_acl.public.*.arn, [""])[0]
-}
-
 output "private_network_acl_arn" {
   description = "ARN of the private network ACL"
   value       = concat(aws_network_acl.private.*.arn, [""])[0]
@@ -120,13 +109,6 @@ output "private_network_acl_arn" {
 output "outpost_network_acl_id" {
   description = "ID of the outpost network ACL"
   value       = concat(aws_network_acl.outpost.*.id, [""])[0]
-}
-
-
-
-output "intra_network_acl_id" {
-  description = "ID of the intra network ACL"
-  value       = concat(aws_network_acl.intra.*.id, [""])[0]
 }
 
 # Static values (arguments)
