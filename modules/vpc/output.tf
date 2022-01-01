@@ -101,25 +101,6 @@ output "egress_only_internet_gateway_id" {
   description = "The ID of the egress only Internet Gateway"
   value       = concat(aws_egress_only_internet_gateway.this.*.id, [""])[0]
 }
-output "vgw_id" {
-  description = "The ID of the VPN Gateway"
-  value       = concat(aws_vpn_gateway.this.*.id, aws_vpn_gateway_attachment.this.*.vpn_gateway_id, [""])[0]
-}
-
-output "vgw_arn" {
-  description = "The ARN of the VPN Gateway"
-  value       = concat(aws_vpn_gateway.this.*.arn, [""])[0]
-}
-
-output "default_vpc_id" {
-  description = "The ID of the Default VPC"
-  value       = concat(aws_default_vpc.this.*.id, [""])[0]
-}
-
-output "default_vpc_arn" {
-  description = "The ARN of the Default VPC"
-  value       = concat(aws_default_vpc.this.*.arn, [""])[0]
-}
 
 output "default_vpc_cidr_block" {
   description = "The CIDR block of the Default VPC"
@@ -161,11 +142,6 @@ output "default_vpc_main_route_table_id" {
   value       = concat(aws_default_vpc.this.*.main_route_table_id, [""])[0]
 }
 
-output "public_network_acl_id" {
-  description = "ID of the public network ACL"
-  value       = concat(aws_network_acl.public.*.id, [""])[0]
-}
-
 output "public_network_acl_arn" {
   description = "ARN of the public network ACL"
   value       = concat(aws_network_acl.public.*.arn, [""])[0]
@@ -186,19 +162,11 @@ output "outpost_network_acl_id" {
   value       = concat(aws_network_acl.outpost.*.id, [""])[0]
 }
 
-output "outpost_network_acl_arn" {
-  description = "ARN of the outpost network ACL"
-  value       = concat(aws_network_acl.outpost.*.arn, [""])[0]
-}
+
 
 output "intra_network_acl_id" {
   description = "ID of the intra network ACL"
   value       = concat(aws_network_acl.intra.*.id, [""])[0]
-}
-# VPC flow log
-output "vpc_flow_log_id" {
-  description = "The ID of the Flow Log resource"
-  value       = concat(aws_flow_log.this.*.id, [""])[0]
 }
 
 output "vpc_flow_log_destination_arn" {
@@ -209,11 +177,6 @@ output "vpc_flow_log_destination_arn" {
 output "vpc_flow_log_destination_type" {
   description = "The type of the destination for VPC Flow Logs"
   value       = var.flow_log_destination_type
-}
-
-output "vpc_flow_log_cloudwatch_iam_role_arn" {
-  description = "The ARN of the IAM role used when pushing logs to Cloudwatch log group"
-  value       = local.flow_log_iam_role_arn
 }
 
 # Static values (arguments)
