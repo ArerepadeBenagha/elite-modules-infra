@@ -112,11 +112,6 @@ output "default_vpc_default_security_group_id" {
   value       = concat(aws_default_vpc.this.*.default_security_group_id, [""])[0]
 }
 
-output "default_vpc_default_network_acl_id" {
-  description = "The ID of the default network ACL of the Default VPC"
-  value       = concat(aws_default_vpc.this.*.default_network_acl_id, [""])[0]
-}
-
 output "default_vpc_default_route_table_id" {
   description = "The ID of the default route table of the Default VPC"
   value       = concat(aws_default_vpc.this.*.default_route_table_id, [""])[0]
@@ -127,16 +122,6 @@ output "default_vpc_instance_tenancy" {
   value       = concat(aws_default_vpc.this.*.instance_tenancy, [""])[0]
 }
 
-output "default_vpc_enable_dns_support" {
-  description = "Whether or not the Default VPC has DNS support"
-  value       = concat(aws_default_vpc.this.*.enable_dns_support, [""])[0]
-}
-
-output "default_vpc_enable_dns_hostnames" {
-  description = "Whether or not the Default VPC has DNS hostname support"
-  value       = concat(aws_default_vpc.this.*.enable_dns_hostnames, [""])[0]
-}
-
 output "default_vpc_main_route_table_id" {
   description = "The ID of the main route table associated with the Default VPC"
   value       = concat(aws_default_vpc.this.*.main_route_table_id, [""])[0]
@@ -145,11 +130,6 @@ output "default_vpc_main_route_table_id" {
 output "public_network_acl_arn" {
   description = "ARN of the public network ACL"
   value       = concat(aws_network_acl.public.*.arn, [""])[0]
-}
-
-output "private_network_acl_id" {
-  description = "ID of the private network ACL"
-  value       = concat(aws_network_acl.private.*.id, [""])[0]
 }
 
 output "private_network_acl_arn" {
@@ -167,11 +147,6 @@ output "outpost_network_acl_id" {
 output "intra_network_acl_id" {
   description = "ID of the intra network ACL"
   value       = concat(aws_network_acl.intra.*.id, [""])[0]
-}
-
-output "vpc_flow_log_destination_arn" {
-  description = "The ARN of the destination for VPC Flow Logs"
-  value       = local.flow_log_destination_arn
 }
 
 output "vpc_flow_log_destination_type" {
