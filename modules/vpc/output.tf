@@ -28,11 +28,6 @@ output "default_route_table_id" {
   value       = concat(aws_vpc.this.*.default_route_table_id, [""])[0]
 }
 
-output "vpc_instance_tenancy" {
-  description = "Tenancy of instances spin up within VPC"
-  value       = concat(aws_vpc.this.*.instance_tenancy, [""])[0]
-}
-
 output "vpc_enable_dns_support" {
   description = "Whether or not the VPC has DNS support"
   value       = concat(aws_vpc.this.*.enable_dns_support, [""])[0]
@@ -107,21 +102,6 @@ output "default_vpc_cidr_block" {
   value       = concat(aws_default_vpc.this.*.cidr_block, [""])[0]
 }
 
-output "default_vpc_default_security_group_id" {
-  description = "The ID of the security group created by default on Default VPC creation"
-  value       = concat(aws_default_vpc.this.*.default_security_group_id, [""])[0]
-}
-
-output "default_vpc_default_route_table_id" {
-  description = "The ID of the default route table of the Default VPC"
-  value       = concat(aws_default_vpc.this.*.default_route_table_id, [""])[0]
-}
-
-output "default_vpc_instance_tenancy" {
-  description = "Tenancy of instances spin up within Default VPC"
-  value       = concat(aws_default_vpc.this.*.instance_tenancy, [""])[0]
-}
-
 output "default_vpc_main_route_table_id" {
   description = "The ID of the main route table associated with the Default VPC"
   value       = concat(aws_default_vpc.this.*.main_route_table_id, [""])[0]
@@ -149,18 +129,8 @@ output "intra_network_acl_id" {
   value       = concat(aws_network_acl.intra.*.id, [""])[0]
 }
 
-output "vpc_flow_log_destination_type" {
-  description = "The type of the destination for VPC Flow Logs"
-  value       = var.flow_log_destination_type
-}
-
 # Static values (arguments)
 output "azs" {
   description = "A list of availability zones specified as argument to this module"
   value       = var.azs
-}
-
-output "name" {
-  description = "The name of the VPC specified as argument to this module"
-  value       = var.name
 }

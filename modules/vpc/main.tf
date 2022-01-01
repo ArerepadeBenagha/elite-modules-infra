@@ -101,8 +101,8 @@ resource "aws_vpc_dhcp_options" "this" {
   domain_name          = var.dhcp_options_domain_name
   domain_name_servers  = var.dhcp_options_domain_name_servers
   ntp_servers          = var.dhcp_options_ntp_servers
-  netbios_name_servers = var.dhcp_options_netbios_name_servers
-  netbios_node_type    = var.dhcp_options_netbios_node_type
+#   netbios_name_servers = var.dhcp_options_netbios_name_servers
+#   netbios_node_type    = var.dhcp_options_netbios_node_type
 
   tags = merge(
     {
@@ -573,7 +573,7 @@ resource "aws_customer_gateway" "this" {
       Name = format("%s-%s", var.name, each.key)
     },
     var.tags,
-    var.customer_gateway_tags,
+    # var.customer_gateway_tags,
   )
 }
 
