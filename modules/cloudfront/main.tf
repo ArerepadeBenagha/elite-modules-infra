@@ -123,7 +123,7 @@ resource "aws_route53_record" "cert_validation" {
 
 /* Domain */
 data "aws_route53_zone" "main" {
-  name         = "elitelabtools.com"
+  name         = var.domain_name
   private_zone = false
 }
 
